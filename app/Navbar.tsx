@@ -27,7 +27,8 @@ export default function Navbar() {
       <Link href="/" className="font-bold">Code Pilates</Link>
       {user ? (
         <div className="flex items-center gap-4">
-          <span className="ml-4">{user.email}</span>
+          <Link href="/favorites">My Favorites</Link>
+<span className="ml-4">{user.email}</span>
           <button onClick={handleLogout} className="border px-3 py-1">Logout</button>
         </div>
       ) : (
