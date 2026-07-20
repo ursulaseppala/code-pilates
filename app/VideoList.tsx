@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 type Video = {
   id: number;
@@ -56,7 +57,7 @@ export default function VideoList({ videos }: { videos: Video[] }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredVideos.map((video) => (
-          <div key={video.id} className="border rounded-lg overflow-hidden shadow-sm">
+          <Link key={video.id} href={`/video/${video.id}`} className="border rounded-lg overflow-hidden shadow-sm block">
             <img src={video.thumbnail_url} alt={video.title} className="w-full h-48 object-cover" />
             <div className="p-4">
               <h2 className="font-semibold text-sm mb-2">{video.title}</h2>
@@ -68,11 +69,11 @@ export default function VideoList({ videos }: { videos: Video[] }) {
                 {video.has_props && <span>Props</span>}
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          </Link>
+))}
     </div>
-  );
+  </div>
+);
 }
 
 function FilterGroup({
