@@ -1,4 +1,5 @@
 import { supabase } from '@/supabaseClient';
+import FavoriteButton from '@/app/FavoriteButton';
 
 export default async function VideoPage({
   params,
@@ -20,7 +21,6 @@ export default async function VideoPage({
   return (
     <main className="p-8 max-w-3xl mx-auto">
       <a href="/" className="text-sm text-gray-500 mb-4 inline-block">&larr; Back to all videos</a>
-      <h1 className="text-2xl font-bold mb-4">{video.title}</h1>
 
       <div className="aspect-video mb-6">
         <iframe
@@ -39,6 +39,9 @@ export default async function VideoPage({
         {video.has_reformer && <span>Reformer</span>}
         {video.has_props && <span>Props</span>}
       </div>
+      <div className="mt-6">
+          <FavoriteButton videoId={video.id} />
+        </div>
     </main>
   );
 }
