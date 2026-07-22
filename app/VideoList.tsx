@@ -55,7 +55,9 @@ export default function VideoList({ videos }: { videos: Video[] }) {
 
       <p className="text-sm text-gray-500 mb-4">{filteredVideos.length} videos</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {filteredVideos.length === 0 ? (
+  <p className="text-gray-500">No videos match these filters — try adjusting them.</p>
+) : (<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredVideos.map((video) => (
           <Link key={video.id} href={`/video/${video.id}`} className="border rounded-lg overflow-hidden shadow-sm block">
             <img src={video.thumbnail_url} alt={video.title} className="w-full h-48 object-cover" />
@@ -71,7 +73,7 @@ export default function VideoList({ videos }: { videos: Video[] }) {
             </div>
           </Link>
 ))}
-    </div>
+    </div>)}
   </div>
 );
 }
